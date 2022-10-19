@@ -36,3 +36,10 @@ Route::get('/name/{name}', function ($name){
 Route::get('/name/{name}/{nrp}', function($name, $nrp){
     return "Nama : " . $name . "<br>" . "NRP : " . $nrp;
 })->where('name', '[A-Za-z]+', 'nrp', '[0-9]+');
+
+Route::get('person', 'PersonController@index');
+
+Route::get('person/show/{param}', 'PersonController@show');
+
+Route::resource('student', 'StudentController');
+
