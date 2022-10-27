@@ -9,8 +9,6 @@ class PersonController extends Controller
     //Membuat attribute Name (seharusnya di model)
     private $name = "Hairan Kani Jatnika";
     private $nrp = "200914016";
-
-    private $code = "200914016";
     private $course;
     private $task;
     private $quiz;
@@ -32,16 +30,19 @@ class PersonController extends Controller
         return view("person.send-data", compact("nrp", "name"));
     }
 
-    public function myCourse($task, $quiz, $grade) {
+    public function myCourse($course, $task, $quiz, $mid_term, $final) {
+        $this->course = $course;
         $this->task = $task;
         $this->quiz = $quiz;
+        $this->mid_term = $mid_term;
+        $this->final = $final;
         $grade = $this->calculateGrade();
 
-        return view("person.my-course", compact('task', 'quiz', 'grade'));
+        return view("person.my-course", compact('course', 'task', 'quiz', 'mid_term', 'final', 'grade'));
     }
 
     private function calculateGrade(){
-        $grade = (($this->task * 0.1) + ($this->task * 0.1));
+        $grade = (($this->task * 0.1) + ($this->task * 0.1) + ($this->mid_term * 0.3) + ($this->final * 0.5));
         return $grade;
     }
 }
