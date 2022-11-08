@@ -47,3 +47,7 @@ Route::get('/person/send-data', 'PersonController@sendData');
 
 Route::get('person/my-course/{course}/{task}/{quiz}/{mid_term}/{final}/', 'PersonController@myCourse');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
