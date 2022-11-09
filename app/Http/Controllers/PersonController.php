@@ -45,4 +45,19 @@ class PersonController extends Controller
         $grade = (($this->task * 0.1) + ($this->task * 0.1) + ($this->mid_term * 0.3) + ($this->final * 0.5));
         return $grade;
     }
+
+    public function create(){
+        return view('person.create');
+    }
+
+    //Untuk menerima inputan dari Form
+    public function store(Request $request){
+        $this->validate($request, [
+            'name' => 'required|max:30',
+            'email' => 'required|email'
+        ]);
+        $person = $request;
+        return view('person.print', compact('person'));
+    }
+
 }

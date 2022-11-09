@@ -47,7 +47,12 @@ Route::get('/person/send-data', 'PersonController@sendData');
 
 Route::get('person/my-course/{course}/{task}/{quiz}/{mid_term}/{final}/', 'PersonController@myCourse');
 
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Method GET
+Route::get('person/create', 'PersonController@create')->name('person.create');
+
+// Method POST
+Route::post('person/store', 'PersonController@store')->name('person.store');
